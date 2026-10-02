@@ -22,3 +22,30 @@ async function setup() {
 setup();
 
 
+async function handleClick() {
+  //logic that should happen when the button is clicked...
+  const inputContent = inputEl.value.trim();
+  if (!inputContent) {
+    outputEl.textContent = "Please type something to translate";
+    return;
+  }
+
+  buttonEl.disabled = true;
+  outputEl.textContent = "Translating..";
+
+  try {
+    outputEl.textContent = await translateText(inputContent);
+  } catch (error) {
+    console.error(error);
+    outputEl.textContent = "Something went wrong whilst translating...";
+  } finally {
+    buttonEl.disabled = false;
+  }
+
+
+}
+
+
+//add event listner to the button
+
+buttonEl.addEventListener('click', handleClick);

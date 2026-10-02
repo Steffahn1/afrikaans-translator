@@ -20,7 +20,9 @@ export async function translateText(inputContent) {
   tgt_lang: 'afr_Latn', 
   });
 
-  return output[0].translation_text;
+  const results = output[0].translation_text;
+
+  return results;
 
 }
 
